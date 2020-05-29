@@ -24,7 +24,9 @@ platform :ios do
   provisionType = getEnvVar("IOS_PROVISION_TYPE") || defaultProvisionType;
   buildType = getEnvVar("IOS_BUILD_TYPE") || defaultBuildType;
   buildConfiguration = getEnvVar("IOS_BUILD_CONFIGURATION") || defaultBuildConfiguration;
-  
+
+  sh("echo \"Host github.com\n\tStrictHostKeyChecking no\n\" > ~/.ssh/config")
+
   promoteBuildEnvVarForCurrentProcess("MATCH_PASSWORD");
   match(
     type: provisionType,
